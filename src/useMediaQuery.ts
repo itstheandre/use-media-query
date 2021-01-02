@@ -8,6 +8,7 @@ function useQuery(query?: string): boolean[];
 function useQuery(query?: string[]): boolean[];
 // function useQuery(query?: Query | { max: boolean; width: number }): boolean[] {
 function useQuery(query?: Query): boolean[] {
+  console.log('query:', query);
   if (!query) {
     return [false];
   }
@@ -33,6 +34,7 @@ function useQuery(query?: Query): boolean[] {
       return isSupported ? !!window.matchMedia(e).matches : false;
     })
   );
+  console.log('matches:', matches);
 
   useSafeLayoutEffect(() => {
     if (!isSupported) return undefined;

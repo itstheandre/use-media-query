@@ -33,7 +33,10 @@ describe(`useMediaQuery when window`, () => {
   });
 
   it.only('takes a base size', () => {
-    console.log(window);
+    global.innerWidth = 500;
+    console.log(window.innerWidth);
+    const { result } = renderHook(() => useMediaQuery('(min-width: 600px)'));
+    console.log('result:', result.current);
   });
 });
 // import * as React from 'react';
