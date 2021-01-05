@@ -59,4 +59,4 @@ function useMediaQuery(query?: Query): boolean[] {
   return matches;
 }
 
-export { useMediaQuery, useMediaQuery as useQuery };
+export { useMediaQuery };
