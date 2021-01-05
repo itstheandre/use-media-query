@@ -60,11 +60,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Get Yarn Cache Directory Path
       - name: Setup NodeJS
         uses: actions/setup-node@v1
         with:
             node-version: "14.x"
+      - name: Get Yarn Cache Directory Path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
       - name: 💰 Cache node_modules
