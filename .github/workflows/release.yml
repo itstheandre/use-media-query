@@ -53,4 +53,50 @@ jobs:
         with:
             name: build
             path: dist
-
+  release:
+    if: github.event_name == 'push'
+    needs: [build_and_test]
+    name: Release Package 🎉🥳
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Get Yarn Cache Directory Path
+      - name: Setup NodeJS
+        uses: actions/setup-node@v1
+        with:
+            node-version: "14.x"
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: 💰 Cache node_modules
+        uses: actions/cache@v2
+        id: yarn-cache
+        with:
+            path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+            key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+            restore-keys: |
+              ${{ runner.os }}-yarn-
+      - name: 🛠️ Build
+        run: pnpm run build
+      - name: 🧪 TEST
+        run: yarn cov
+      - name: 🆙Load Coverage Reports To CodeCov
+        run: npx codecov
+        env: 
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: 📦 Release to NPM
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.CUSTOM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Open Issue
+        if: failure()
+        run: |
+          curl --request POST \
+          --url https://api.github.com/repos/${{ github.repository }}/issues \
+          --header 'authorization: Bearer ${{ secrets.CUSTOM_TOKEN }}' \
+          --header 'content-type: application/json' \
+          --data '{
+            "title": "Automated issue for commit: ${{ github.sha }}",
+            "body": "This issue was automatically created by the GitHub Action workflow **${{ github.workflow }}**. \n\n The commit hash was: _${{ github.sha }}_.",
+            "assignees": ["${{ github.event.pull_request.user.login }}"]
+            }'
