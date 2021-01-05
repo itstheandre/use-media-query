@@ -76,7 +76,7 @@ jobs:
             restore-keys: |
               ${{ runner.os }}-yarn-
       - name: 🛠️ Build
-        run: pnpm run build
+        run: yarn build
       - name: 🧪 TEST
         run: yarn cov
       - name: 🆙Load Coverage Reports To CodeCov
