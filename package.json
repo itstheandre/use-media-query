@@ -17,7 +17,8 @@
     "lint": "tsdx lint",
     "prepare": "tsdx build",
     "size": "size-limit",
-    "analyze": "size-limit --why"
+    "analyze": "size-limit --why",
+    "cov": "tsdx test --collectCoverage"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -71,5 +72,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "@solx/ismediaquery": "^1.1.0"
   }
 }

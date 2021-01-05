@@ -1,9 +1,14 @@
 import 'react-app-polyfill/ie11';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Thing } from '../.';
+import { useQuery } from '../dist';
 
+function Thing() {
+  return <h1>Hello</h1>;
+}
 const App = () => {
+  const data = useQuery(['(min-width:900px)', '(max-width:1000px)']);
+  console.log('data2:', data);
   return (
     <div>
       <Thing />

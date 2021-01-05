@@ -1,33 +1,24 @@
 import * as React from 'react';
+import { isMediaQuery } from '@solx/ismediaquery';
 import { isBrowser, Query, useSafeLayoutEffect } from './utils';
 
-function useQuery(query?: undefined): boolean[];
 // function useQuery(query?: { max: true; width: number }): boolean[];
 // function useQuery(query?: { max: false; width: number }): boolean[];
 function useQuery(query?: string): boolean[];
 function useQuery(query?: string[]): boolean[];
 // function useQuery(query?: Query | { max: boolean; width: number }): boolean[] {
 function useQuery(query?: Query): boolean[] {
-  console.log('query:', query);
+  const isSupported = isBrowser && 'matchMedia' in window;
+
   if (!query) {
     return [false];
   }
 
-  // let queries: string[];
-
-  // if (typeof query === 'object') {
-  //   if (Array.isArray(query)) {
-  //     queries = query;
-  //   } else if (query.max) {
-  //     queries = [`(max)-width: ${query.width}px`];
-  //   } else {
-  //     queries = [`(min-width: ${query.width}px)`];
-  //   }
-  // } else {
-  //   queries = [query];
-  // }
   const queries = Array.isArray(query) ? query : [query];
-  const isSupported = isBrowser && 'matchMedia' in window;
+  const every = queries.every(isMediaQuery);
+  if (!every) {
+    return queries.map(_ => false);
+  }
 
   const [matches, setMatches] = React.useState(
     queries.map(e => {

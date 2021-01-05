@@ -1,5 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks';
-import { useMediaQuery } from '../src';
+import { useMediaQuery, useQuery } from '../src';
 // import { fireEvent } from '@testing-library/react';
 // import { useMediaQuery } from '../src';
 
@@ -24,7 +24,7 @@ afterEach(() => {
 describe(`useMediaQuery when window`, () => {
   act;
   describe(`no args`, () => {
-    it(`displays false`, () => {
+    it.skip(`displays false`, () => {
       const { result } = renderHook(() => useMediaQuery());
       const [val] = result.current;
 
@@ -32,11 +32,23 @@ describe(`useMediaQuery when window`, () => {
     });
   });
 
-  it.only('takes a base size', () => {
-    global.innerWidth = 500;
-    console.log(window.innerWidth);
-    const { result } = renderHook(() => useMediaQuery('(min-width: 600px)'));
+  it('returns arr of false if if no string, or wrong mediaQuery', () => {
+    const { result } = renderHook(() =>
+      useMediaQuery(['', 'max-height:500px'])
+    );
     console.log('result:', result.current);
+  });
+  it('takes a base size', () => {
+    global.innerWidth = 500;
+    global.matchMedia = jest
+      .fn()
+      .mockImplementation(() => ({ ...baseWindow, matches: false }));
+    const { result } = renderHook(() => useQuery('(max-width: 600px)'));
+    const { result: result2 } = renderHook(() => useQuery('max-width: 600px'));
+
+    result2;
+    result;
+    // console.log('result:', result.current);
   });
 });
 // import * as React from 'react';

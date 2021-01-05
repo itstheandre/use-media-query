@@ -1311,6 +1311,30 @@
     webpack "^4.44.1"
     webpack-bundle-analyzer "^3.9.0"
 
+"@solx/css-features@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@solx/css-features/-/css-features-1.2.1.tgz#687bffaf60164d477a706741c9c5528661450222"
+  integrity sha512-dmEkqYJd/sRsMoj2XwVFcQ82xW73epRJhdV3bfDt89D89bWi8WC8gANrttPb+mcXzkETH5VcRT1Dt0O/VjD6UQ==
+
+"@solx/css-media-types@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@solx/css-media-types/-/css-media-types-1.1.1.tgz#21d81251e9013f77e36a1382aed29d303282cf5e"
+  integrity sha512-hV8Tepiq/3z7L+JPPHpOhJZbnrR6f3sbQwdF6Th8Mhj7iiBhA+uiuzLiS664SwYqhCHQt4UROCwOd4MsObqKUg==
+
+"@solx/css-units@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@solx/css-units/-/css-units-1.0.0.tgz#bfa0e0e28ebd6716ad49063466988bf6dd6cf67d"
+  integrity sha512-pZjVc1XogL7j+O0qMU11qNSR3Vxj2/ExTsTiDLEc/TpPuRVi7DsXc7fJ+NCoVcTFIRYIm0NfNlSEfXdf6shaWA==
+
+"@solx/ismediaquery@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@solx/ismediaquery/-/ismediaquery-1.1.0.tgz#4c95d299c2349986a8d3db4cf192b90b47b6b05d"
+  integrity sha512-BF/Cs7NzKiP+vvY2EnT2efEmXIYMtvvUZv0vlwaH6E3YN06OR6O5aXsyKztjFCmr6fYfs0l70cZFY7yVhvYTMA==
+  dependencies:
+    "@solx/css-features" "^1.2.1"
+    "@solx/css-media-types" "^1.1.1"
+    "@solx/css-units" "^1.0.0"
+
 "@testing-library/dom@^7.28.1":
   version "7.29.0"
   resolved "https://registry.yarnpkg.com/@testing-library/dom/-/dom-7.29.0.tgz#60b18065bab50a5cde21fe80275a47a43024d9cc"
