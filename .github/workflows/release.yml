@@ -31,8 +31,8 @@ jobs:
             node-version: "14.x"
       - name: Install Deps
         run: yarn install --frozen-lockfile
-      - name: Link
-        run:  yarn link
+      - name: Lint
+        run:  yarn lint
       - name: 🛠️ Build
         run: yarn build
       - name: 🧪 Test
@@ -75,6 +75,8 @@ jobs:
             key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
             restore-keys: |
               ${{ runner.os }}-yarn-
+      - name: Install Deps
+        run: yarn install --frozen-lockfile
       - name: 🛠️ Build
         run: yarn build
       - name: 🧪 TEST
