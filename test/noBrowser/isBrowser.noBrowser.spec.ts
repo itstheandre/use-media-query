@@ -2,7 +2,7 @@
 import { isBrowser } from '../../src/utils';
 
 describe(`isBrowser`, () => {
-  it.skip('when no browser', () => {
+  it('when no browser', () => {
     expect(isBrowser).toBe(false);
   });
 });

@@ -4,7 +4,7 @@ import { useMediaQuery } from '../../src';
 
 describe(`useMediaQuery`, () => {
   describe('no Browser', () => {
-    it.skip('no args', () => {
+    it('no args', () => {
       const { result } = renderHook(() => useMediaQuery());
       const [val] = result.current;
 
@@ -12,14 +12,14 @@ describe(`useMediaQuery`, () => {
     });
   });
 
-  it.skip('one arg', () => {
+  it('one arg', () => {
     const { result } = renderHook(() => useMediaQuery('min-height: 1000px'));
     const [val] = result.current;
 
     expect(val).toBeFalsy();
   });
 
-  it.skip(`multiple args`, () => {
+  it(`multiple args`, () => {
     const query = '(min-width: 1000px)';
     const { result } = renderHook(() => useMediaQuery([query, query, query]));
     expect(result.current.length).toBe(3);
