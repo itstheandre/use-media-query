@@ -1326,10 +1326,10 @@
   resolved "https://registry.yarnpkg.com/@solx/css-units/-/css-units-1.0.0.tgz#bfa0e0e28ebd6716ad49063466988bf6dd6cf67d"
   integrity sha512-pZjVc1XogL7j+O0qMU11qNSR3Vxj2/ExTsTiDLEc/TpPuRVi7DsXc7fJ+NCoVcTFIRYIm0NfNlSEfXdf6shaWA==
 
-"@solx/ismediaquery@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@solx/ismediaquery/-/ismediaquery-1.1.0.tgz#4c95d299c2349986a8d3db4cf192b90b47b6b05d"
-  integrity sha512-BF/Cs7NzKiP+vvY2EnT2efEmXIYMtvvUZv0vlwaH6E3YN06OR6O5aXsyKztjFCmr6fYfs0l70cZFY7yVhvYTMA==
+"@solx/ismediaquery@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@solx/ismediaquery/-/ismediaquery-1.1.1.tgz#c909e122d297d67e2835ead9d427961e541364fd"
+  integrity sha512-nLp8A9YFOySFaEoVtV6xVJUHwNfdmUb9H0aHvC+U8itEiECSX4ENZ7uqsRcwI2YxP2MP7lvl7+wmUnXpD3styw==
   dependencies:
     "@solx/css-features" "^1.2.1"
     "@solx/css-media-types" "^1.1.1"

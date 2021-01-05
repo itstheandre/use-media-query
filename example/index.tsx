@@ -8,6 +8,7 @@ function Thing() {
 }
 const App = () => {
   const data = useQuery(['(min-width:900px)', '(max-width:1000px)']);
+  console.log(useQuery(['(max-height: 600px)']));
   console.log('data2:', data);
   return (
     <div>

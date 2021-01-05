@@ -10,7 +10,7 @@ afterEach(() => {
 });
 
 describe('Window Stuff', () => {
-  it.skip('real value when there is a window', () => {
+  it('real value when there is a window', () => {
     //   windowSpy
     expect(isBrowser).toStrictEqual(window.document.createElement);
   });

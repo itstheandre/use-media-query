@@ -1,12 +1,14 @@
+import { isMediaQuery } from '@solx/ismediaquery';
 import { renderHook, act } from '@testing-library/react-hooks';
 import { useMediaQuery, useQuery } from '../src';
+import { isMin } from './testUtil';
 // import { fireEvent } from '@testing-library/react';
 // import { useMediaQuery } from '../src';
 
 let windowSpy: jest.SpyInstance;
 
 const baseWindow = {
-  matches: true,
+  matches: false,
   addEventListener: jest.fn(),
   removeEventListener: jest.fn(),
 };
@@ -24,7 +26,7 @@ afterEach(() => {
 describe(`useMediaQuery when window`, () => {
   act;
   describe(`no args`, () => {
-    it.skip(`displays false`, () => {
+    it(`displays false`, () => {
       const { result } = renderHook(() => useMediaQuery());
       const [val] = result.current;
 
@@ -33,10 +35,15 @@ describe(`useMediaQuery when window`, () => {
   });
 
   it('returns arr of false if if no string, or wrong mediaQuery', () => {
+    console.log(isMediaQuery(''));
     const { result } = renderHook(() =>
       useMediaQuery(['', 'max-height:500px'])
     );
-    console.log('result:', result.current);
+
+    const [arg1, arg2] = result.current;
+    expect(arg1).toBe(false);
+    expect(arg2).toBe(false);
+    console.log('result. LOOKY HERE?:', result.current);
   });
   it('takes a base size', () => {
     global.innerWidth = 500;
@@ -46,6 +53,7 @@ describe(`useMediaQuery when window`, () => {
     const { result } = renderHook(() => useQuery('(max-width: 600px)'));
     const { result: result2 } = renderHook(() => useQuery('max-width: 600px'));
 
+    isMin();
     result2;
     result;
     // console.log('result:', result.current);

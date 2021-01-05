@@ -8,17 +8,18 @@ function useQuery(query?: string): boolean[];
 function useQuery(query?: string[]): boolean[];
 // function useQuery(query?: Query | { max: boolean; width: number }): boolean[] {
 function useQuery(query?: Query): boolean[] {
-  const isSupported = isBrowser && 'matchMedia' in window;
-
   if (!query) {
     return [false];
   }
 
   const queries = Array.isArray(query) ? query : [query];
   const every = queries.every(isMediaQuery);
+
   if (!every) {
     return queries.map(_ => false);
   }
+
+  const isSupported = isBrowser && 'matchMedia' in window;
 
   const [matches, setMatches] = React.useState(
     queries.map(e => {
