@@ -35,7 +35,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "use-media-query",
+  "name": "@solx/use-media-query",
   "author": "André de Albuquerque",
   "module": "dist/usemediaquery.esm.js",
   "size-limit": [
